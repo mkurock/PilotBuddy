@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Storage.Streams;
+using Windows.UI;
 using Windows.UI.Xaml.Controls.Maps;
 
 namespace PilotBuddy.Models
@@ -26,7 +27,9 @@ namespace PilotBuddy.Models
         private MapIcon airplane;
         private Geopoint cologne = new Geopoint(new BasicGeoposition() { Longitude = 9.9204493, Latitude = 50.9580867 });
         private RandomAccessStreamReference image;
-        private Geopoint pointBuffer;
+        private Geopoint position;
+
+        public Point NormalizedAnchorPoint { get; set; }
 
 
         private VelocityUnits velocityUnit;
@@ -99,15 +102,15 @@ namespace PilotBuddy.Models
             }
         }
 
-        public Geopoint PointBuffer
+        public Geopoint Position
         {
             get
             {
-                return pointBuffer;
+                return position;
             }
             set
             {
-                pointBuffer = value;
+                position = value; OnPropertyChanged("Position");
             }
         }
 
@@ -144,8 +147,10 @@ namespace PilotBuddy.Models
 
         private void InitMap()
         {
+            
+            NormalizedAnchorPoint = new Point(0.5, 0.5);
             zoomLevel = 10;
-            pointBuffer = cologne;
+            Position = cologne;
             image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/images/airplane.png"));
 
             //Setup Icao Layer
@@ -178,6 +183,20 @@ namespace PilotBuddy.Models
                 NormalizedAnchorPoint = new Point(0.5, 0.5)
 
             };
+        }
+
+        public void DrawLine(Geopoint one, Geopoint two, MapControl map)
+        {
+            if (two == null)
+                two = cologne;
+            var path = new List<BasicGeoposition>();
+            path.Add(new BasicGeoposition() { Latitude = one.Position.Latitude, Longitude = one.Position.Longitude });
+            path.Add(new BasicGeoposition() { Latitude = two.Position.Latitude, Longitude = two.Position.Longitude });
+            var line = new MapPolyline();
+            line.StrokeColor = Colors.Purple;
+            line.StrokeThickness = 9;
+            line.Path = new Geopath(path);
+            map.MapElements.Add(line);
         }
     }
     public enum VelocityUnits

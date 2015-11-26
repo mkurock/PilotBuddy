@@ -40,9 +40,9 @@ namespace PilotBuddy.Pages
             this.DataContext = _vm;
             _gps = new Geolocator();
             MyMap.Style = MapStyle.None;
-            MyMap.MapElements.Add(_vm.Airplane);
+            //MyMap.MapElements.Add(_vm.Airplane);
             systemSetCenter = true;
-            MyMap.Center = _vm.PointBuffer;
+            MyMap.Center = _vm.Position;
             MyMap.ZoomLevel = _vm.ZoomLevel;
             MyMap.ZoomLevelChanged += (s, e) =>
             {
@@ -67,6 +67,8 @@ namespace PilotBuddy.Pages
                     break;
             }
             _vm.VelocityUnit = VelocityUnits.Knots;
+            var t = new MapIcon();
+            
             SetRefresh();
         }
 
@@ -129,7 +131,7 @@ namespace PilotBuddy.Pages
                 systemSetCenter = true;
                 MyMap.Center = currentPos;
             }
-            _vm.PointBuffer = currentPos;
+            _vm.Position = currentPos;
         }
 
 
@@ -139,6 +141,7 @@ namespace PilotBuddy.Pages
             MyMap.TileSources.Clear();
             _vm.ActiveTileSource = MapTileLayerTypes.Icao;
             MyMap.TileSources.Add(_vm.IcaoTileSource);
+            _vm.DrawLine(_vm.Position, null, MyMap);
         }
 
         private void LOWLVL_Tapped(object sender, TappedRoutedEventArgs e)

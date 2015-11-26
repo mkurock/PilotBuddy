@@ -30,7 +30,19 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Maps:MapControl Grid.Row="0" Name="MyMap" Heading="0" MapServiceToken="vYA12IQ4gErbBzCJWD04~Jm-i7Ec36CIxhvpqdx0vFw~AmtGm-vbuf4wkxU1x_eEe8BD3FUAFpy0uirCaOg3xRX-UToBptqEc_RhW9hZJShb" CenterChanged="MyMap_CenterChanged" />
+        <Maps:MapControl Grid.Row="0" Name="MyMap" Heading="0" MapServiceToken="vYA12IQ4gErbBzCJWD04~Jm-i7Ec36CIxhvpqdx0vFw~AmtGm-vbuf4wkxU1x_eEe8BD3FUAFpy0uirCaOg3xRX-UToBptqEc_RhW9hZJShb" CenterChanged="MyMap_CenterChanged">
+            <Maps:MapItemsControl>
+                <Image
+                    x:Name="AirplaneIcon"
+                    Source="/Assets/images/airplane.png"
+                    Width="50"
+                    Maps:MapControl.Location="{Binding Position}"
+                    Maps:MapControl.NormalizedAnchorPoint="{Binding NormalizedAnchorPoint}"
+                    
+               >
+                </Image>
+            </Maps:MapItemsControl>
+        </Maps:MapControl>
 
         <StackPanel VerticalAlignment="Top" Orientation="Horizontal" Background="#CC000000" HorizontalAlignment="Left">
             <TextBlock Style="{StaticResource MapButton}" Text="ICAO" Tapped="ICAO_Tapped" />

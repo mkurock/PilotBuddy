@@ -7,8 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.Resources>
-        <Style TargetType="TextBox" x:Key="InputBox">
-            <Setter Property="Margin" Value="10,10,100,0" />
+        <Style TargetType="AutoSuggestBox" x:Key="InputBox">
+            <Setter Property="Margin" Value="10,10,10,0" />
         </Style>
         <Style TargetType="Button" x:Key="MyButton">
             <Setter Property="Width" Value="80" />
@@ -22,8 +22,15 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBox IsTextPredictionEnabled="False" KeyDown="KeyPresses_Event" Text="{Binding Input, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource InputBox}" Name="tbAirport" PlaceholderText="eg. EDDK EDDL EDDH" RequestedTheme="Dark" />
-        <Button IsEnabled="{Binding canClick}" Style="{StaticResource MyButton}" Content="Search" RequestedTheme="Dark" Click="Button_Click" />
+        <AutoSuggestBox TextChanged="tbAirport_TextChanged" 
+                        QuerySubmitted="tbAirport_QuerySubmitted"
+                        SuggestionChosen="tbAirport_SuggestionChosen"
+                        QueryIcon="Find" 
+                        Text="{Binding Input, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                        Style="{StaticResource InputBox}" 
+                        Name="tbAirport" 
+                        PlaceholderText="eg. EDDK EDDL EDDH" 
+                        RequestedTheme="Dark" />
 
         <ListView Name="listview" ItemsSource="{Binding Results}" Grid.Row="1">
             <ListView.ItemTemplate>

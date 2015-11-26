@@ -33,6 +33,8 @@ namespace PilotBuddy.Models
             }
         }
 
+        public List<String> MetarAirports { get; set; }
+
         private ObservableCollection<SimpleMetarResult> results;
         public ObservableCollection<SimpleMetarResult> Results
         {
@@ -43,14 +45,22 @@ namespace PilotBuddy.Models
         public WeatherViewModel()
         {
             results = new ObservableCollection<SimpleMetarResult>();
-
+            MetarAirports = new List<string>();
+            MetarAirports.Add("EDLP");
+            MetarAirports.Add("EDDG");
+            MetarAirports.Add("EDDK");
+            MetarAirports.Add("EDDV");
+            MetarAirports.Add("EDDL");
+            MetarAirports.Add("EDDH");
+            MetarAirports.Add("EDDM");
+            MetarAirports.Add("EDDS");
         }
 
-        public async void GetWeatherStations()
+        public async void GetWeatherStations(string input)
         {
             Results.Clear();
             HttpClient client = new HttpClient();
-            var result = await client.GetStreamAsync(weatherUrl.Replace("{station}", Input).Replace("{hours}", "1"));
+            var result = await client.GetStreamAsync(weatherUrl.Replace("{station}", input).Replace("{hours}", "0.5"));
             XmlSerializer xs = new XmlSerializer(typeof(response));
             var m = (response)xs.Deserialize(result);
             

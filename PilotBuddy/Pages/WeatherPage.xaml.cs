@@ -32,20 +32,25 @@ namespace PilotBuddy.Pages
             _vm = App.VM.WeatherViewModel;
             this.DataContext = _vm;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void tbAirport_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            _vm.GetWeatherStations();
+            if(args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                sender.ItemsSource = _vm.MetarAirports.Where(x => x.ToLower().Contains(sender.Text.ToLower()));
+            }
         }
 
-        private void KeyPresses_Event(object sender, KeyRoutedEventArgs e)
+        private void tbAirport_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
-            if(e.Key == Windows.System.VirtualKey.Enter)
+            if(args.ChosenSuggestion == null)
             {
-                ((TextBox)sender).IsEnabled = false;
-                _vm.GetWeatherStations();
-                ((TextBox)sender).IsEnabled = true;
+                _vm.GetWeatherStations(sender.Text);
             }
+        }
+
+        private void tbAirport_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+            _vm.GetWeatherStations(args.SelectedItem.ToString());
         }
     }
 }
