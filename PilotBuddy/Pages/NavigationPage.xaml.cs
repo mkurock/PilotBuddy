@@ -39,6 +39,7 @@ namespace PilotBuddy.Pages
             _vm = App.VM.NavigationViewModel;
             this.DataContext = _vm;
             _gps = new Geolocator();
+            _gps.DesiredAccuracy = PositionAccuracy.Default;
             MyMap.Style = MapStyle.None;
             //MyMap.MapElements.Add(_vm.Airplane);
             systemSetCenter = true;
@@ -91,40 +92,41 @@ namespace PilotBuddy.Pages
         {
             var location = await _gps.GetGeopositionAsync();
             var currentPos = new Geopoint(new BasicGeoposition() { Longitude = location.Coordinate.Longitude, Latitude = location.Coordinate.Latitude });
-            double heading = 0;
-            //var heading = NavigationHelper.GetHeading(_vm.PointBuffer, currentPos);
-            //if (heading >= 0)
+            double heading;
+            heading = Math.Round(NavigationHelper.GetHeading(_vm.Position, currentPos), 0);
+            if (heading >= 0)
+            {
+                _vm.Track = Math.Round(heading, 0);
+                if (!_blockCenter)
+                {
+                    MyMap.Heading = heading;
+                }
+                else
+                {
+
+                }
+            }
+
+            //if(location.Coordinate.Heading <= 0)
             //{
-            //    _vm.Track = Math.Round(heading, 0);
-            //    if (!_blockCenter)
-            //    {
-            //        MyMap.Heading = heading;
-            //    } else
-            //    {
-                    
-            //    }
+            //    heading = (double)location.Coordinate.Heading + 360;
+            //} else
+            //{
+            //    heading = (double)location.Coordinate.Heading;
             //}
-            
-            if(location.Coordinate.Heading <= 0)
-            {
-                heading = (double)location.Coordinate.Heading + 360;
-            } else
-            {
-                heading = (double)location.Coordinate.Heading;
-            }
-            if (!_blockCenter)
-            {
-                MyMap.Heading = heading;
-            }
-            _vm.Track = Math.Round(heading, 0);
+            //if (!_blockCenter)
+            //{
+            //    MyMap.Heading = heading;
+            //}
+            //_vm.Track = Math.Round(heading, 0);
 
-            //_vm.Velocity = NavigationHelper.GetDistanceBetween(currentPos, _vm.PointBuffer) / _vm.RefreshRateInSec * 3600;
+            _vm.Velocity = Math.Round(NavigationHelper.GetDistanceBetween(currentPos, _vm.Position) / _vm.RefreshRateInSec * 3600, 0);
 
-            if (_vm.VelocityUnit == VelocityUnits.KilometerPerHour)
-                _vm.Velocity = Math.Round((double)location.Coordinate.Speed * 3.6, 0);
-            else if (_vm.VelocityUnit == VelocityUnits.Knots)
-                _vm.Velocity = Math.Round((double)location.Coordinate.Speed * 1.94384449, 0);
-                
+            //if (_vm.VelocityUnit == VelocityUnits.KilometerPerHour)
+            //    _vm.Velocity = Math.Round((double)location.Coordinate.Speed * 3.6, 0);
+            //else if (_vm.VelocityUnit == VelocityUnits.Knots)
+            //    _vm.Velocity = Math.Round((double)location.Coordinate.Speed * 1.94384449, 0);
+
             _vm.Airplane.Location = currentPos;
             if (!_blockCenter)
             {
@@ -141,7 +143,7 @@ namespace PilotBuddy.Pages
             MyMap.TileSources.Clear();
             _vm.ActiveTileSource = MapTileLayerTypes.Icao;
             MyMap.TileSources.Add(_vm.IcaoTileSource);
-            _vm.DrawLine(_vm.Position, null, MyMap);
+            //_vm.DrawLine(_vm.Position, null, MyMap);
         }
 
         private void LOWLVL_Tapped(object sender, TappedRoutedEventArgs e)
@@ -186,8 +188,15 @@ namespace PilotBuddy.Pages
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
+            App.VM.DisplayRequest.RequestRelease();
             //_timer.Stop();
             base.OnNavigatedFrom(e);
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            App.VM.DisplayRequest.RequestActive();
+            base.OnNavigatedTo(e);
         }
     }
 }

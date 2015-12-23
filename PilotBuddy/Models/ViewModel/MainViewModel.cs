@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PilotBuddy.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace PilotBuddy.Models
 {
     public class MainViewModel : BasicViewModel
     {
-
+        Windows.System.Display.DisplayRequest req;
         private NavigationViewModel navVM;
 
         public NavigationViewModel NavigationViewModel
@@ -33,11 +34,29 @@ namespace PilotBuddy.Models
             }
         }
 
+        private TimeViewModel timeVM;
+        public TimeViewModel TimeViewModel
+        {
+            get
+            {
+                if (timeVM == null)
+                    timeVM = new TimeViewModel();
+                return timeVM;
+            }
+        }
+        public Windows.System.Display.DisplayRequest DisplayRequest
+        {
+            get
+            {
+                return req;
+            }
+        }
+
 
 
         public MainViewModel()
         {
-
+            req = new Windows.System.Display.DisplayRequest();
         }
     }
 }

@@ -1,0 +1,64 @@
+﻿<Page
+    x:Class="PilotBuddy.Pages.Times"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PilotBuddy.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <StackPanel>
+            <TextBlock Foreground="White" x:Name="OnBlocksLabel" Text="Off Block Time" />
+            <TextBlock Foreground="White" x:Name="OnBlocksText"  Text="{Binding OBT, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Foreground="White" Text="Take Off Time" />
+            <TextBlock Foreground="White" Text="{Binding TOT, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <TextBlock Foreground="White" Text="Landing Time" />
+            <TextBlock Foreground="White" Text="{Binding LNT, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3">
+            <TextBlock Foreground="White" Text="On Block Time" />
+            <TextBlock Foreground="White" Text="{Binding ONBT, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+            <Button Name="OBT" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" IsEnabled="{Binding OBTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+            <Button Name="OBTClear"  Foreground="White" Content="Clear" Click="Clear_click" RequestedTheme="Dark" Visibility="{Binding OBTVisible, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
+            <Button Name="TOT" Grid.Row="1" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" IsEnabled="{Binding TOTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+            <Button Name="TOTClear"  Foreground="White" Content="Clear" Click="Clear_click" RequestedTheme="Dark" Visibility="{Binding TOTVisible, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right">
+            <Button Name="LNT" Grid.Row="2" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" IsEnabled="{Binding LNTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+            <Button Name="LNTClear"  Foreground="White" Content="Clear" Click="Clear_click" RequestedTheme="Dark" Visibility="{Binding LNTVisible, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right">
+            <Button Name="ONBT" Grid.Row="3" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" IsEnabled="{Binding ONBTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+            <Button Name="ONBTClear"  Foreground="White" Content="Clear" Click="Clear_click" RequestedTheme="Dark" Visibility="{Binding ONBTVisible, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+    </Grid>
+</Page>

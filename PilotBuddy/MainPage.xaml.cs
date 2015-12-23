@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace PilotBuddy
@@ -46,6 +47,9 @@ namespace PilotBuddy
                         break;
                     case "Weather":
                         ContentFrame.Navigate(typeof(WeatherPage));
+                        break;
+                    case "Times":
+                        ContentFrame.Navigate(typeof(Times));
                         break;
                     default:
                         ContentFrame.Navigate(typeof(WeatherPage));

@@ -108,9 +108,13 @@
     <Compile Include="Models\NavigationHelper.cs" />
     <Compile Include="Models\ViewModel\NavigationViewModel.cs" />
     <Compile Include="Models\SimpleMetarResult.cs" />
+    <Compile Include="Models\ViewModel\TimeViewModel.cs" />
     <Compile Include="Models\ViewModel\WeatherViewModel.cs" />
     <Compile Include="Pages\NavigationPage.xaml.cs">
       <DependentUpon>NavigationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Times.xaml.cs">
+      <DependentUpon>Times.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\WeatherPage.xaml.cs">
       <DependentUpon>WeatherPage.xaml</DependentUpon>
@@ -146,6 +150,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\NavigationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Times.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

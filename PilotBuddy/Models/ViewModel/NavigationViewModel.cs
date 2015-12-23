@@ -14,6 +14,7 @@ namespace PilotBuddy.Models
 {
     public class NavigationViewModel : BasicViewModel
     {
+        #region Properties and Fields
         MapTileSource _icaoTileSource;
         MapTileSource _vfrTileSource;
         MapTileSource _lowlvlTileSource;
@@ -136,6 +137,7 @@ namespace PilotBuddy.Models
             get { return velocity; }
             set { velocity = value; OnPropertyChanged("Velocity"); }
         }
+#endregion
 
 
 

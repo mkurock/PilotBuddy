@@ -54,6 +54,12 @@
                             <TextBlock Style="{StaticResource SideBarText}" Text="Map" />
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem Name="Times" Margin="0, 5, 0, 5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Style="{StaticResource SideBarIcon}" Text="&#xE1C4;" />
+                            <TextBlock Style="{StaticResource SideBarText}" Text="Times" />
+                        </StackPanel>
+                    </ListViewItem>
                     <!--<ListViewItem Margin="0, 5, 0, 5">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Style="{StaticResource SideBarIcon}" Text="&#xE249;" />
