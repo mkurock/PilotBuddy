@@ -51,6 +51,17 @@ namespace PilotBuddy.Models
                 return req;
             }
         }
+        private ChecklistViewModel checklistVM;
+
+        public ChecklistViewModel ChecklistViewModel
+        {
+            get
+            {
+                if (checklistVM == null)
+                    checklistVM = new ChecklistViewModel();
+                return checklistVM;
+            }
+        }
 
 
 

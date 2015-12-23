@@ -1,0 +1,127 @@
+﻿<Aircrafts>
+  <Aircraft>
+    <Title>Cessna 172R</Title>
+    <Checklists>
+      <Checklist>
+        <Title>Cockpit Checklist</Title>
+        <Items>
+          <item>
+            <Title>Preflight Inspection</Title>
+            <Result>COMPLETE</Result>
+          </item>
+          <item>
+            <Title>Seatbelts</Title>
+            <Result>FASTENED</Result>
+          </item>
+          <item>
+            <Title>Cabin Doors</Title>
+            <Result>CLOSED and LOCKED</Result>
+          </item>
+          <item>
+            <Title>Passenger Briefing</Title>
+            <Result>COMPLETE</Result>
+          </item>
+          <item>
+            <Title>Fuel selector</Title>
+            <Result>BOTH</Result>
+          </item>
+          <item>
+            <Title>Avioncs</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Circuit breaks</Title>
+            <Result>ALL IN</Result>
+          </item>
+          <item>
+            <Title>Flight Controls</Title>
+            <Result>CHECKED</Result>
+          </item>
+          <item>
+            <Title>Parking Break</Title>
+            <Result>SET</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>Taxi Checklist</Title>
+        <Items>
+          <item>
+            <Title>Parking Break</Title>
+            <Result>RELEASED</Result>
+          </item>
+          <item>
+            <Title>Mixture</Title>
+            <Result>LEANED</Result>
+          </item>
+          <item>
+            <Title>Breaks</Title>
+            <Result>Checked</Result>
+          </item>
+          <item>
+            <Title>Flight Instruments</Title>
+            <Result>CHECKED</Result>
+          </item>
+        </Items>
+      </Checklist>
+    </Checklists>
+  </Aircraft>
+  <Aircraft>
+    <Title>Piper 28 Warrior</Title>
+    <Checklists>
+      <Checklist>
+        <Title>Cockpit Checklist</Title>
+        <Items>
+          <item>
+            <Title>Preflight Inspection</Title>
+            <Result>COMPLETE</Result>
+          </item>
+          <item>
+            <Title>Seatbelts</Title>
+            <Result>FASTENED</Result>
+          </item>
+          <item>
+            <Title>Cabin Doors</Title>
+            <Result>CLOSED and LOCKED</Result>
+          </item>
+          <item>
+            <Title>Passenger Briefing</Title>
+            <Result>COMPLETE</Result>
+          </item>
+          <item>
+            <Title>Fuel selector</Title>
+            <Result>BOTH</Result>
+          </item>
+          <item>
+            <Title>Carberator Heat</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Carberator Heat</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Carberator Heat</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Avioncs</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Circuit breaks</Title>
+            <Result>ALL IN</Result>
+          </item>
+          <item>
+            <Title>Flight Controls</Title>
+            <Result>CHECKED</Result>
+          </item>
+          <item>
+            <Title>Parking Break</Title>
+            <Result>SET</Result>
+          </item>
+        </Items>
+      </Checklist>
+    </Checklists>
+  </Aircraft>
+</Aircrafts>

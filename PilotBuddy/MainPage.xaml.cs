@@ -51,6 +51,9 @@ namespace PilotBuddy
                     case "Times":
                         ContentFrame.Navigate(typeof(Times));
                         break;
+                    case "Checklists":
+                        ContentFrame.Navigate(typeof(Checklists));
+                        break;
                     default:
                         ContentFrame.Navigate(typeof(WeatherPage));
                         break;
