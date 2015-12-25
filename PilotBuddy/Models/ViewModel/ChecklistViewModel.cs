@@ -70,7 +70,7 @@ namespace PilotBuddy.Models.ViewModel
         {
             var NewAc = Aircrafts.FirstOrDefault(x => x.Value == AC);
             ActiveAircraft = NewAc.Key;
-
+            currentChecklistIndex = 0;
             CurrentChecklist = Checklists.Aircraft[ActiveAircraft].Checklists[currentChecklistIndex];
             ChecklistCount = Checklists.Aircraft[ActiveAircraft].Checklists.Length;
             OnPropertyChanged("CurrentChecklist");

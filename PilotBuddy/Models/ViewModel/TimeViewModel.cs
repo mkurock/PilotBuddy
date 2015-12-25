@@ -60,34 +60,34 @@ namespace PilotBuddy.Models.ViewModel
             }
         }
 
-        public bool OBTEnabled
+        public Visibility OBTEnabled
         {
             get
             {
-                return OBT == "";
+                return OBT == "" ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
-        public bool TOTEnabled
+        public Visibility TOTEnabled
         {
             get
             {
-                return TOT == "";
+                return TOT == "" ? Visibility.Visible : Visibility.Collapsed;
             }
         }
-        public bool LNTEnabled
+        public Visibility LNTEnabled
         {
             get
             {
-                return LNT == "";
+                return LNT == "" ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
-        public bool ONBTEnabled
+        public Visibility ONBTEnabled
         {
             get
             {
-                return ONBT == "";
+                return ONBT == "" ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
@@ -136,7 +136,7 @@ namespace PilotBuddy.Models.ViewModel
 
         public void SetTime(TimeType type)
         {
-            var time = DateTime.UtcNow.ToString("hh:mm");
+            var time = DateTime.UtcNow.ToString("HH:mm");
             switch (type)
             {
                 case TimeType.OffBlock:

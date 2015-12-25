@@ -75,17 +75,73 @@ namespace PilotBuddy.Pages
 
         private void SetRefresh()
         {
-            if (_timer == null)
+            //////////////////////////////////////
+            //THE TIMER WAY SOLUTION
+            //////////////////////////////////////
+            //if (_timer == null)
+            //{
+            //    _timer = new DispatcherTimer();
+            //    _timer.Interval = TimeSpan.FromSeconds(_vm.RefreshRateInSec);
+            //    _timer.Tick += timerTick;
+            //    _timer.Start();
+            //}
+            //if (!_timer.IsEnabled)
+            //{
+            //    _timer.Start();
+            //}
+
+            ///////////////////////////////////////
+            //GPS POSITIOIN CHANGED EVENT SOLUTION
+            ///////////////////////////////////////
+            _gps.PositionChanged += _gps_PositionChanged;
+        }
+
+        private async void _gps_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        {
+            var loc = await sender.GetGeopositionAsync();
+            var currentPos = new Geopoint(new BasicGeoposition { Longitude = loc.Coordinate.Longitude, Latitude = loc.Coordinate.Latitude });
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
-                _timer = new DispatcherTimer();
-                _timer.Interval = TimeSpan.FromSeconds(_vm.RefreshRateInSec);
-                _timer.Tick += timerTick;
-                _timer.Start();
-            }
-            if (!_timer.IsEnabled)
-            {
-                _timer.Start();
-            }
+                
+                //HEADING CALCULATION
+                double heading;
+                if (loc.Coordinate.Heading != double.NaN)
+                {
+                    if (loc.Coordinate.Heading <= 0)
+                    {
+                        heading = (double)loc.Coordinate.Heading + 360;
+                    }
+                    else
+                    {
+                        heading = (double)loc.Coordinate.Heading;
+                    }
+                    if (!_blockCenter)
+                    {
+
+                        MyMap.Heading = heading;
+
+                    }
+                    _vm.Track = Math.Round(heading, 0);
+                }
+
+                //CALCULATION OF SPEED
+                if (_vm.VelocityUnit == VelocityUnits.KilometerPerHour)
+                    _vm.Velocity = Math.Round((double)loc.Coordinate.Speed * 3.6, 0);
+                else if (_vm.VelocityUnit == VelocityUnits.Knots)
+                    _vm.Velocity = Math.Round((double)loc.Coordinate.Speed * 1.94384449, 0);
+
+
+                //
+                _vm.Position = currentPos;
+                _vm.Airplane.Location = currentPos;
+
+                if (!_blockCenter)
+                {
+                    systemSetCenter = true;
+                    MyMap.Center = currentPos;
+                }
+            });
+
         }
 
         private async void timerTick(object sender, object e)
@@ -93,39 +149,41 @@ namespace PilotBuddy.Pages
             var location = await _gps.GetGeopositionAsync();
             var currentPos = new Geopoint(new BasicGeoposition() { Longitude = location.Coordinate.Longitude, Latitude = location.Coordinate.Latitude });
             double heading;
-            heading = Math.Round(NavigationHelper.GetHeading(_vm.Position, currentPos), 0);
-            if (heading >= 0)
+            //heading = Math.Round(NavigationHelper.GetHeading(_vm.Position, currentPos), 0);
+            //if (heading >= 0)
+            //{
+            //    _vm.Track = Math.Round(heading, 0);
+            //    if (!_blockCenter)
+            //    {
+            //        MyMap.Heading = heading;
+            //    }
+            //    else
+            //    {
+
+            //    }
+            //}
+
+            
+            if (location.Coordinate.Heading <= 0)
             {
-                _vm.Track = Math.Round(heading, 0);
-                if (!_blockCenter)
-                {
-                    MyMap.Heading = heading;
-                }
-                else
-                {
-
-                }
+                heading = (double)location.Coordinate.Heading + 360;
             }
+            else
+            {
+                heading = (double)location.Coordinate.Heading;
+            }
+            if (!_blockCenter)
+            {
+                MyMap.Heading = heading;
+            }
+            _vm.Track = Math.Round(heading, 0);
 
-            //if(location.Coordinate.Heading <= 0)
-            //{
-            //    heading = (double)location.Coordinate.Heading + 360;
-            //} else
-            //{
-            //    heading = (double)location.Coordinate.Heading;
-            //}
-            //if (!_blockCenter)
-            //{
-            //    MyMap.Heading = heading;
-            //}
-            //_vm.Track = Math.Round(heading, 0);
+            //_vm.Velocity = Math.Round(NavigationHelper.GetDistanceBetween(currentPos, _vm.Position) / _vm.RefreshRateInSec * 3600, 0);
 
-            _vm.Velocity = Math.Round(NavigationHelper.GetDistanceBetween(currentPos, _vm.Position) / _vm.RefreshRateInSec * 3600, 0);
-
-            //if (_vm.VelocityUnit == VelocityUnits.KilometerPerHour)
-            //    _vm.Velocity = Math.Round((double)location.Coordinate.Speed * 3.6, 0);
-            //else if (_vm.VelocityUnit == VelocityUnits.Knots)
-            //    _vm.Velocity = Math.Round((double)location.Coordinate.Speed * 1.94384449, 0);
+            if (_vm.VelocityUnit == VelocityUnits.KilometerPerHour)
+                _vm.Velocity = Math.Round((double)location.Coordinate.Speed * 3.6, 0);
+            else if (_vm.VelocityUnit == VelocityUnits.Knots)
+                _vm.Velocity = Math.Round((double)location.Coordinate.Speed * 1.94384449, 0);
 
             _vm.Airplane.Location = currentPos;
             if (!_blockCenter)

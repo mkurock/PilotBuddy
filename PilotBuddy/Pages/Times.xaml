@@ -41,22 +41,22 @@
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-            <Button Name="OBT" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" IsEnabled="{Binding OBTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+            <Button Name="OBT" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" Visibility="{Binding OBTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
             <Button Name="OBTClear"  Foreground="White" Content="Clear" Click="Clear_click" RequestedTheme="Dark" Visibility="{Binding OBTVisible, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
         
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
-            <Button Name="TOT" Grid.Row="1" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" IsEnabled="{Binding TOTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+            <Button Name="TOT" Grid.Row="1" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" Visibility="{Binding TOTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
             <Button Name="TOTClear"  Foreground="White" Content="Clear" Click="Clear_click" RequestedTheme="Dark" Visibility="{Binding TOTVisible, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right">
-            <Button Name="LNT" Grid.Row="2" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" IsEnabled="{Binding LNTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+            <Button Name="LNT" Grid.Row="2" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" Visibility="{Binding LNTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
             <Button Name="LNTClear"  Foreground="White" Content="Clear" Click="Clear_click" RequestedTheme="Dark" Visibility="{Binding LNTVisible, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right">
-            <Button Name="ONBT" Grid.Row="3" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" IsEnabled="{Binding ONBTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
+            <Button Name="ONBT" Grid.Row="3" Grid.Column="1" Foreground="White" Content="SET" Click="Set_click" RequestedTheme="Dark" Visibility="{Binding ONBTEnabled, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
             <Button Name="ONBTClear"  Foreground="White" Content="Clear" Click="Clear_click" RequestedTheme="Dark" Visibility="{Binding ONBTVisible, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
 

@@ -44,6 +44,80 @@
         </Items>
       </Checklist>
       <Checklist>
+        <Title>Engine Startup DOLIST</Title>
+        <Items>
+          <item>
+            <Title>Throttle</Title>
+            <Result>6MM</Result>
+          </item>
+          <item>
+            <Title>Mixture</Title>
+            <Result>CUTOFF</Result>
+          </item>
+          <item>
+            <Title>Master/BAT</Title>
+            <Result>ON</Result>
+          </item>
+          <item>
+            <Title>Beacon</Title>
+            <Result>ON</Result>
+          </item>
+          <item>
+            <Title>Fuel Pump</Title>
+            <Result>ON</Result>
+          </item>
+          <item>
+            <Title>Mixture</Title>
+            <Result>RICH then IDLE</Result>
+          </item>
+          <item>
+            <Title>Fuel Pump</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Prop.</Title>
+            <Result>CLEAR</Result>
+          </item>
+          <item>
+            <Title>Starter</Title>
+            <Result>ENGAGE</Result>
+          </item>
+          <item>
+            <Title>When engine Starts Mixture</Title>
+            <Result>RICH</Result>
+          </item>
+          <item>
+            <Title>Oil Pressure</Title>
+            <Result>CHECKED</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>After Engine Start Checklist</Title>
+        <Items>
+          <item>
+            <Title>Avionics</Title>
+            <Result>ON</Result>
+          </item>
+          <item>
+            <Title>Comm + Nav</Title>
+            <Result>SET for DEP</Result>
+          </item>
+          <item>
+            <Title>Trim</Title>
+            <Result>NEUTRAL</Result>
+          </item>
+          <item>
+            <Title>Altimeter</Title>
+            <Result>SET QNH ___</Result>
+          </item>
+          <item>
+            <Title>Gyro</Title>
+            <Result>SET</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
         <Title>Taxi Checklist</Title>
         <Items>
           <item>
@@ -61,6 +135,223 @@
           <item>
             <Title>Flight Instruments</Title>
             <Result>CHECKED</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>Runup DOLIST</Title>
+        <Items>
+          <item>
+            <Title>Parking Break</Title>
+            <Result>SET</Result>
+          </item>
+          <item>
+            <Title>Mixture</Title>
+            <Result>RICH</Result>
+          </item>
+          <item>
+            <Title>Engine</Title>
+            <Result>1.800 RPM</Result>
+          </item>
+          <item>
+            <Title>Magnetos</Title>
+            <Result>CHECKED</Result>
+          </item>
+          <item>
+            <Title>Alternator</Title>
+            <Result>CHECKED</Result>
+          </item>
+          <item>
+            <Title>Engine Instruments</Title>
+            <Result>CHECKED</Result>
+          </item>
+          <item>
+            <Title>Suction</Title>
+            <Result>CHECKED</Result>
+          </item>
+          <item>
+            <Title>Annunciator Panel</Title>
+            <Result>CHECKED</Result>
+          </item>
+          <item>
+            <Title>Engine</Title>
+            <Result>1.000 RPM</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>Before TO Checklist</Title>
+        <Items>
+          <item>
+            <Title>Flaps</Title>
+            <Result>SET FOR T/O</Result>
+          </item>
+          <item>
+            <Title>Trim</Title>
+            <Result>SET FOR T/O</Result>
+          </item>
+          <item>
+            <Title>T/O Briefing</Title>
+            <Result>COMPLETED</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>Cleared for T/O Checklist</Title>
+        <Items>
+          <item>
+            <Title>Pitot Heat</Title>
+            <Result>AS RQRD</Result>
+          </item>
+          <item>
+            <Title>Landing Lights / Strobes</Title>
+            <Result>ON</Result>
+          </item>
+          <item>
+            <Title>Transponder</Title>
+            <Result>____ ALT</Result>
+          </item>
+          <item>
+            <Title>Gyro</Title>
+            <Result>CHECKED</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>After T/O Checklist</Title>
+        <Items>
+          <item>
+            <Title>Flaps</Title>
+            <Result>UP</Result>
+          </item>
+          <item>
+            <Title>Landing Lights</Title>
+            <Result>OFF</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>Cruise Checklist</Title>
+        <Items>
+          <item>
+            <Title>Throttle</Title>
+            <Result>SET 65%</Result>
+          </item>
+          <item>
+            <Title>Mixtures</Title>
+            <Result>LEANED</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>Approach Checklist</Title>
+        <Items>
+          <item>
+            <Title>ATIS</Title>
+            <Result>RECEIVED</Result>
+          </item>
+          <item>
+            <Title>Seats</Title>
+            <Result>LOCKED</Result>
+          </item>
+          <item>
+            <Title>Seat Belts</Title>
+            <Result>FASTEND</Result>
+          </item>
+          <item>
+            <Title>Fuel Selector</Title>
+            <Result>BOTH</Result>
+          </item>
+          <item>
+            <Title>Landing Lights</Title>
+            <Result>ON</Result>
+          </item>
+          <item>
+            <Title>Approach Briefing</Title>
+            <Result>COMPLETED</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>Final Checklist</Title>
+        <Items>
+          <item>
+            <Title>Mixture</Title>
+            <Result>RICH</Result>
+          </item>
+          <item>
+            <Title>Flaps</Title>
+            <Result>__ SET</Result>
+          </item>
+          <item>
+            <Title>VREF</Title>
+            <Result>55 / 60knts</Result>
+          </item>
+          <item>
+            <Title>VTGT</Title>
+            <Result>___ knts</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>After Landing Checklist</Title>
+        <Items>
+          <item>
+            <Title>Pitot Heat</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Transponder</Title>
+            <Result>STBY</Result>
+          </item>
+          <item>
+            <Title>Landing Lights / Strobes</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Flaps</Title>
+            <Result>UP</Result>
+          </item>
+        </Items>
+      </Checklist>
+      <Checklist>
+        <Title>Shutdown DOLIST</Title>
+        <Items>
+          <item>
+            <Title>Parking Break</Title>
+            <Result>SET</Result>
+          </item>
+          <item>
+            <Title>Avionics</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>NAV Lights</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Instrment Lights</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Dome Lights</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Mixture</Title>
+            <Result>CUT OFF</Result>
+          </item>
+          <item>
+            <Title>Ignition</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Master/BAT</Title>
+            <Result>OFF</Result>
+          </item>
+          <item>
+            <Title>Fuel Selector</Title>
+            <Result>L or R (UNEVEN SURFACE)</Result>
           </item>
         </Items>
       </Checklist>

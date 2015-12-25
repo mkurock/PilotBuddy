@@ -154,7 +154,7 @@ namespace PilotBuddy.Models
             zoomLevel = 10;
             Position = cologne;
             image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/images/airplane.png"));
-
+            VelocityUnit = VelocityUnits.Knots;
             //Setup Icao Layer
             _icaoTileSource = new MapTileSource();
             var _tileLayer = new HttpMapTileDataSource();
