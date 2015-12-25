@@ -120,7 +120,14 @@ namespace PilotBuddy.Models
         public double Track
         {
             get { return track; }
-            set { track = value; OnPropertyChanged("Track"); }
+            set { track = value; OnPropertyChanged("Track"); OnPropertyChanged("TrackString"); }
+        }
+        public string TrackString
+        {
+            get
+            {
+                return String.Format("{0:000}", Track);
+            }
         }
         private double zoomLevel;
 

@@ -114,9 +114,9 @@ namespace PilotBuddy.Models.ViewModel
 
         internal void NextChecklist()
         {
-            if(currentChecklistIndex < Checklists.Aircraft[0].Checklists.Length - 1)
+            if(currentChecklistIndex < Checklists.Aircraft[ActiveAircraft].Checklists.Length - 1)
                 currentChecklistIndex++;
-            CurrentChecklist = Checklists.Aircraft[0].Checklists[currentChecklistIndex];
+            CurrentChecklist = Checklists.Aircraft[ActiveAircraft].Checklists[currentChecklistIndex];
             OnPropertyChanged("CurrentChecklist");
             OnPropertyChanged("CurrentChecklistIndex");
             OnPropertyChanged("ChecklistPosition");
@@ -126,7 +126,7 @@ namespace PilotBuddy.Models.ViewModel
         {
             if (currentChecklistIndex > 0)
                 currentChecklistIndex--;
-            CurrentChecklist = Checklists.Aircraft[0].Checklists[currentChecklistIndex];
+            CurrentChecklist = Checklists.Aircraft[ActiveAircraft].Checklists[currentChecklistIndex];
             OnPropertyChanged("CurrentChecklist");
             OnPropertyChanged("CurrentChecklistIndex");
             OnPropertyChanged("ChecklistPosition");

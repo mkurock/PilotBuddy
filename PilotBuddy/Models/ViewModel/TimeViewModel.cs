@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 using Windows.UI.Xaml;
 
 namespace PilotBuddy.Models.ViewModel
@@ -132,6 +134,7 @@ namespace PilotBuddy.Models.ViewModel
             TOT = "";
             LNT = "";
             ONBT = "";
+            ReadTimes();
         }
 
         public void SetTime(TimeType type)
@@ -153,6 +156,14 @@ namespace PilotBuddy.Models.ViewModel
                     break;
                 default:
                     break;
+            }
+            try
+            {
+                SaveTimes();
+            }
+            catch
+            {
+
             }
         }
 
@@ -177,6 +188,13 @@ namespace PilotBuddy.Models.ViewModel
                 default:
                     break;
             }
+            try
+            {
+                SaveTimes();
+            } catch
+            {
+
+            }
         }
 
         public enum TimeType
@@ -186,6 +204,56 @@ namespace PilotBuddy.Models.ViewModel
             TakeOff,
             Landing,
             OnBlock
+        }
+
+        private void ReadTimes()
+        {
+            if (!File.Exists("Assets/Data/Times.xml"))
+            {
+                CreateNewTimesFile();
+            }
+            else
+            {
+                using (var fs = File.OpenRead("Assets/Data/Times.xml"))
+                {
+                    var sr = new XmlSerializer(typeof(TimesModel));
+                    var res = (TimesModel)sr.Deserialize(fs);
+                    OBT = res.OBT;
+                    TOT = res.TOT;
+                    LNT = res.LNT;
+                    ONBT = res.ONBT;
+                }
+            }
+        }
+
+        private void CreateNewTimesFile()
+        {
+            using(var fs = File.Open("Assets/Data/Times.xml", FileMode.OpenOrCreate))
+            {
+                var newItem = new TimesModel();
+                newItem.OBT = "";
+                newItem.TOT = "";
+                newItem.LNT = "";
+                newItem.ONBT = "";
+                var sr = new XmlSerializer(newItem.GetType());
+                sr.Serialize(fs, newItem);
+            }
+        }
+
+        private void SaveTimes()
+        {
+            var toSave = new TimesModel
+            {
+                OBT = OBT,
+                TOT = TOT,
+                LNT = LNT,
+                ONBT = ONBT
+            };
+            using (var fs = File.Open("Assets/Data/Times.xml", FileMode.Truncate))
+            {
+                var sr = new XmlSerializer(toSave.GetType());
+                sr.Serialize(fs, toSave);
+            }
         }
     }
 }

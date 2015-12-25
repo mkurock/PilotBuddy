@@ -54,14 +54,23 @@
             <Button Style="{StaticResource ZoomButtons}" Content="+" Click="zoomIn_Click" />
             <Button Style="{StaticResource ZoomButtons}" Content="C" Click="Center_Click" />
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Bottom" Width="100" Height="30" HorizontalAlignment="Left" Background="Black">
-            <TextBlock Text="Track: " Foreground="White" />
-            <TextBlock Foreground="White" Name="tbHeading" Text="{Binding Track}" />
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" VerticalAlignment="Bottom" Width="100" Height="30" HorizontalAlignment="Right" Background="Black">
-            <TextBlock Text="Speed: " Foreground="White" />
-            <TextBlock Foreground="White" Name="tbZoom" Text="{Binding Velocity}" />
-        </StackPanel>
+        <Grid Grid.Row="1" VerticalAlignment="Bottom" Background="Black" Opacity="0.9">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"  />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" TextAlignment="Center" Text="Track: " Foreground="White" />
+            <TextBlock Grid.Row="1" Grid.Column="0" TextAlignment="Center" Foreground="White" Name="tbHeading" Text="{Binding TrackString}" />
+            <TextBlock Grid.Row="0" Grid.Column="2" TextAlignment="Center" Text="GS: " Foreground="White" />
+            <TextBlock Grid.Row="1" Grid.Column="2" TextAlignment="Center"  Foreground="White" Name="tbZoom" Text="{Binding Velocity}" />
+        </Grid>
+
 
     </Grid>
 

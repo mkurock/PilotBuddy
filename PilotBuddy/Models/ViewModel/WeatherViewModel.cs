@@ -60,7 +60,7 @@ namespace PilotBuddy.Models
         {
             Results.Clear();
             HttpClient client = new HttpClient();
-            var result = await client.GetStreamAsync(weatherUrl.Replace("{station}", input).Replace("{hours}", "0.5"));
+            var result = await client.GetStreamAsync(weatherUrl.Replace("{station}", input).Replace("{hours}", "1"));
             XmlSerializer xs = new XmlSerializer(typeof(response));
             var m = (response)xs.Deserialize(result);
             

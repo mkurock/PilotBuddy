@@ -105,7 +105,7 @@ namespace PilotBuddy.Pages
                 
                 //HEADING CALCULATION
                 double heading;
-                if (loc.Coordinate.Heading != double.NaN)
+                if (!double.IsNaN((double)loc.Coordinate.Heading))
                 {
                     if (loc.Coordinate.Heading <= 0)
                     {
@@ -125,11 +125,13 @@ namespace PilotBuddy.Pages
                 }
 
                 //CALCULATION OF SPEED
-                if (_vm.VelocityUnit == VelocityUnits.KilometerPerHour)
-                    _vm.Velocity = Math.Round((double)loc.Coordinate.Speed * 3.6, 0);
-                else if (_vm.VelocityUnit == VelocityUnits.Knots)
-                    _vm.Velocity = Math.Round((double)loc.Coordinate.Speed * 1.94384449, 0);
-
+                if (!double.IsNaN((double)loc.Coordinate.Speed))
+                {
+                    if (_vm.VelocityUnit == VelocityUnits.KilometerPerHour)
+                        _vm.Velocity = Math.Round((double)loc.Coordinate.Speed * 3.6, 0);
+                    else if (_vm.VelocityUnit == VelocityUnits.Knots)
+                        _vm.Velocity = Math.Round((double)loc.Coordinate.Speed * 1.94384449, 0);
+                }
 
                 //
                 _vm.Position = currentPos;
