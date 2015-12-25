@@ -69,6 +69,10 @@ namespace PilotBuddy.Models.ViewModel
         internal void SelectAircraft(string AC)
         {
             var NewAc = Aircrafts.FirstOrDefault(x => x.Value == AC);
+            if(ActiveAircraft == NewAc.Key)
+            {
+                return;
+            }
             ActiveAircraft = NewAc.Key;
             currentChecklistIndex = 0;
             CurrentChecklist = Checklists.Aircraft[ActiveAircraft].Checklists[currentChecklistIndex];
